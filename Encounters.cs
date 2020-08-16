@@ -26,13 +26,25 @@ namespace Helvete
             Combat(true, "", 0, 0);
         }
 
+        public static void WizardEncounter()
+        {
+            Console.Clear();
+            Console.WriteLine("The door slowly creaks open as you peer into the dark room. You see a tall man with a ");
+            Console.WriteLine("long beard looking at large tome.");
+            Console.ReadKey();
+            Combat(false, "Dark Wizard", 10, 20);
+        }
+
         //Encounter Tools
         public static void RandomEncounter()
         {
-            switch(rand.Next(0, 1))
+            switch(rand.Next(0, 2))
             {
                 case 0:
                     BasicEncounter();
+                    break;
+                case 1:
+                    WizardEncounter();
                     break;
             }
         }
