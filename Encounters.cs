@@ -20,6 +20,7 @@ namespace Helvete
 
         public static void BasicEncounter()
         {
+            Console.Clear();
             Console.WriteLine("You turn the corner and there you see a hulking beast...");
             Console.ReadKey();
             Combat(true, "", 0, 0);
@@ -171,11 +172,20 @@ namespace Helvete
                     }
                     Console.ReadKey();
                 }
+
+                if(Program.currentPlayer.health <= 0)
+                {
+                    //Death
+                    Console.WriteLine("The " + n + " stands tall and comes down to strike. You have been slayn by the mighty " + n + "!");
+                    Console.ReadKey();
+                    System.Environment.Exit(0);
+                }
                 Console.ReadKey();
             }
             int c = rand.Next(10, 50);
 
             Console.WriteLine("As you stand victorious over the " + n + ", its body dissolves into " + c + " gold coins!");
+            Program.currentPlayer.coins += c;
             Console.ReadKey();
         }
 
