@@ -18,7 +18,24 @@ namespace Helvete
             Combat(false, "Human Rouge", 1, 4);
         }
 
+        public static void BasicEncounter()
+        {
+            Console.WriteLine("You turn the corner and there you see a hulking beast...");
+            Console.ReadKey();
+            Combat(true, "", 0, 0);
+        }
+
         //Encounter Tools
+        public static void RandomEncounter()
+        {
+            switch(rand.Next(0, 1))
+            {
+                case 0:
+                    BasicEncounter();
+                    break;
+            }
+        }
+
         public static void Combat(bool random, string name, int power, int health)
         {
             string n = "";
@@ -27,7 +44,9 @@ namespace Helvete
 
             if (random)
             {
-
+                n = GetName();
+                p = rand.Next(1, 5);
+                h = rand.Next(1, 8);
             }
             else
             {
@@ -52,7 +71,7 @@ namespace Helvete
                 if (input.ToLower() == "a" || input.ToLower() == "attack")
                 {
                     //Attack
-                    Console.WriteLine("With haste you surge forth, your sword flying in your hands! As you pass, the " + n + " strikes as you pass...");
+                    Console.WriteLine("With haste you surge forth, your sword flying in your hands! As you pass, the " + n + " strikes you...");
 
                     int damage = p - Program.currentPlayer.armor;
 
@@ -154,6 +173,28 @@ namespace Helvete
                 }
                 Console.ReadKey();
             }
+            int c = rand.Next(10, 50);
+
+            Console.WriteLine("As you stand victorious over the " + n + ", its body dissolves into " + c + " gold coins!");
+            Console.ReadKey();
+        }
+
+        public static string GetName()
+        {
+            switch (rand.Next(0, 4))
+            {
+                case 0:
+                    return "Skeleton";
+                case 1:
+                    return "Zombie";
+                case 2:
+                    return "Human Cultist";
+                case 3:
+                    return "Grave Robber";
+                default:
+                    break;
+            }
+            return "Human Rouge";
         }
     }
 }

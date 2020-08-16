@@ -5,10 +5,17 @@ namespace Helvete
     class Program
     {
         public static Player currentPlayer = new Player();
+        public static bool mainLoop = true;
+
         static void Main(string[] args)
         {
             Start();
             Encounters.FirstEncounter();
+
+            while(mainLoop)
+            {
+                Encounters.RandomEncounter();
+            }
         }
 
         static void Start()
@@ -17,7 +24,7 @@ namespace Helvete
             Console.WriteLine("Type your name:");
             currentPlayer.name = Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("\nYou awake in a cold, stone, dark room. You feel dazed and are having trouble remembering");
+            Console.WriteLine("You awake in a cold, stone, dark room. You feel dazed and are having trouble remembering");
             Console.WriteLine("anything about your past.");
 
             if (currentPlayer.name == "")
