@@ -8,6 +8,7 @@ namespace Helvete
         static void Main(string[] args)
         {
             Start();
+            Encounters.FirstEncounter();
         }
 
         static void Start()
@@ -16,7 +17,7 @@ namespace Helvete
             Console.WriteLine("Type your name:");
             currentPlayer.name = Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("\nYou awake in a cold, stone, dark room. You feel dazed and are having troubleremembering");
+            Console.WriteLine("\nYou awake in a cold, stone, dark room. You feel dazed and are having trouble remembering");
             Console.WriteLine("anything about your past.");
 
             if (currentPlayer.name == "")
