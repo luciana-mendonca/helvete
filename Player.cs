@@ -10,5 +10,6 @@ namespace Helvete
         public int health = 10;
         public string name;
         public int potion = 5;
+        public int weapon = 1;
     }
 }

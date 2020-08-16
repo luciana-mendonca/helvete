@@ -4,6 +4,8 @@ namespace Helvete
 {
     public class Encounters
     {
+        static Random rand = new Random();
+
         //Encounter Generic
 
         //Encounters
@@ -21,7 +23,7 @@ namespace Helvete
             int p = 0;
             int h = 0;
 
-            if(random)
+            if (random)
             {
 
             }
@@ -32,20 +34,30 @@ namespace Helvete
                 h = health;
             }
 
-            while(h > 0)
+            while (h > 0)
             {
                 Console.WriteLine("==========================");
                 Console.WriteLine("|   (A)ttack  (D)efend   |");
                 Console.WriteLine("|     (R)un     (H)eal   |");
                 Console.WriteLine("==========================");
                 Console.WriteLine(" Potions: " + Program.currentPlayer.potion + "  Health: " + Program.currentPlayer.health);
+
                 string input = Console.ReadLine();
 
-                if(input.ToLower() == "a" || input.ToLower() == "attack")
+                if (input.ToLower() == "a" || input.ToLower() == "attack")
                 {
                     //Attack
+                    Console.WriteLine("With haste you surge forth, your sword flying in your hands! As you pass, the " + n + " strikes as you pass...");
+
+                    int damage = p - Program.currentPlayer.armor;
+                    int attack = rand.Next(1, Program.currentPlayer.weapon) + rand.Next(1, 4);
+
+                    Console.WriteLine("You lose " + damage + "health and deal " + attack + " damage");
+                    Program.currentPlayer.health -= damage;
+
+                    h -= attack;
                 }
-                else if(input.ToLower() == "d" || input.ToLower() == "defend")
+                else if (input.ToLower() == "d" || input.ToLower() == "defend")
                 {
                     //Defend
                 }
@@ -57,6 +69,7 @@ namespace Helvete
                 {
                     //Heal
                 }
+                Console.ReadKey();
             }
         }
     }
