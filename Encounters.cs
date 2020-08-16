@@ -4,7 +4,7 @@ namespace Helvete
 {
     public class Encounters
     {
-        static Random rand = new Random();
+        static readonly Random rand = new Random();
 
         //Encounter Generic
 
@@ -15,7 +15,7 @@ namespace Helvete
             Console.WriteLine("He turns...");
             Console.ReadKey();
 
-            Combat(false, "Human Rouge", 1, 4);
+            Combat(false, "Human Rogue", 1, 4);
         }
 
         public static void BasicEncounter()
@@ -58,8 +58,8 @@ namespace Helvete
             if (random)
             {
                 n = GetName();
-                p = rand.Next(1, 5);
-                h = rand.Next(1, 8);
+                p = Program.currentPlayer.GetPower();
+                h = Program.currentPlayer.GetHealth();
             }
             else
             {
@@ -138,6 +138,7 @@ namespace Helvete
                         {
                             Console.WriteLine("You lose " + damage + " health and are unable to escape!");
                             Console.ReadKey();
+                            Shop.LoadShop(Program.currentPlayer);
                         }
                     }
                     else
@@ -216,7 +217,7 @@ namespace Helvete
                 default:
                     break;
             }
-            return "Human Rouge";
+            return "Human Rogue";
         }
     }
 }
